@@ -1,0 +1,124 @@
+<h1 id="heading" class="cl">{{title}}</h1>
+<div *ngIf="success_msg; then updated_msg; else error_msg" id="ngif1">
+  <h1>successfully done</h1>
+</div>
+<div *ngIf="any_msg" id="ngif2">
+  <h1>This also added successfully</h1>
+</div>
+<ng-template  #error_msg>
+  this is not successfully done
+</ng-template>
+
+<ng-template #updated_msg>
+  The work is updated
+</ng-template>
+
+ <h2>Example of ngFor</h2>
+
+ <ul>
+   <li *ngFor="let contact of contacts; index as i; first as f; last as l">
+     <div *ngIf="f" style="background-color: chartreuse;">This is first element</div>
+     <div>
+      {{i}} {{contact.firstName}} {{contact.lastname}}
+     </div>
+     <div *ngIf="l" style="background-color:darkcyan;">This is last element</div>
+   </li>
+ </ul>
+
+ <h2>New Table with even and odd</h2>
+
+ <ul>
+   <li *ngFor="let contact of contacts; index as i; even as e; odd as o">
+     <div *ngIf="e" style="background-color:#dddd;">
+      {{i}} {{contact.firstName}} {{contact.lastname}}
+    </div>
+     <div *ngIf="o" style="background-color:darksalmon;">
+      {{i}} {{contact.firstName}} {{contact.lastname}}
+    </div>
+   </li>
+ </ul>
+
+ <h1>Learning ngSwitch</h1>
+
+ <div [ngSwitch]="SuperPower">
+   <div *ngSwitchCase="'wonderwoman'">Display wonder Woman Super Power</div>
+   <div *ngSwitchCase="'superMan'">Display super Man Super Power</div>
+   <div *ngSwitchCase="'heMan'">Display he Man Super Power</div>
+   <div *ngSwitchCase="'spiderMan'">Display spider ManSuper Power</div>
+   <div *ngSwitchDefault>Super power is in learning</div>
+ </div>
+
+ <div [ngSwitch]="number">
+  <div *ngSwitchCase="30">Display the number is 30</div>
+  <div *ngSwitchCase="50">Display the numbr is 50 </div>
+  <div *ngSwitchDefault>The value doesnot matches with the data provided</div>
+</div>
+
+<h1>Learning ngStyle</h1>
+
+<div [ngStyle]="{'background-color': 'green', 'color': '#ffff'}">This is green DIV</div>
+<div [ngStyle]="{'background-color': Styleprop}">This is red div</div>
+<div [ngStyle]="{'color': textclr === 'blue'? 'blue': 'green'}">
+  this is dynamic conditional ngStyle
+</div>
+
+
+
+<table>
+  <tr>
+    <th>Contat Id</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+  </tr>
+  <tr *ngFor="let contact of contacts">
+    <td [title]="contact.contactid">{{contact.contactid}}</td>
+    <td [title]="contact.firstName">{{contact.firstName}}</td>
+    <td [title]="contact.lastname">{{contact.lastname}}</td>
+  </tr> 
+
+</table>
+
+<div *ngIf="!isUserLoggedIn">
+  <div [innerHTML]="userObject.firstname"></div>
+</div>
+
+<p>My name is {{name}}</p>
+    <button (click)="updateName()">Update</button> 
+
+
+
+  <table [ngStyle]="{'background-color': 'purple', 'color': '#ffff'}">
+    <tr>
+      <td>contactID</td>
+      <td>ContactName</td>
+      <td>ContactMail</td>
+    </tr>
+    <tr>
+      <td [attr.colspan]="colVal">contactID</td>
+      <td>ContactName</td>
+      <td></td>
+    </tr>
+  </table>
+
+
+  <input [(ngModel)]="username"/>
+  <div *ngIf="month < 5"> {{username}} </div>
+
+  <div>{{lowercaseExamp | lowercase}}</div>
+
+  <div>{{uppercaseExamp | uppercase}}</div>
+
+  <div>{{dateExample | date | uppercase}}</div>
+
+  <div>{{jsonExamp | json }}</div>
+  
+  <div>{{currencyexamp | currency: 'INR'}}</div> 
+
+  <!-- <div class="parent">
+    <h2>parent component</h2>
+    <app-authentication> </app-authentication>
+  </div> -->
+
+
+
+<router-outlet></router-outlet>
