@@ -1,0 +1,8 @@
+<h1 id="gametitle">{{title}}</h1>
+<h3 id="player_name">Now the turn is&nbsp;{{players}}'s</h3>
+<div class="container">
+  <div class="game_area">
+    <div *ngFor="let square of board; let i= index" (click)="playerhandle(i)" class="square">{{square}}</div>
+  </div>
+</div>
+<router-outlet></router-outlet>
